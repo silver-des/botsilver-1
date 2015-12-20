@@ -219,7 +219,7 @@ function create_config( )
     "download_media",
     "invite"
     },
-    sudo_users = {110626080,103649648,0,tonumber(our_id)},--Sudo users
+    sudo_users = {121122782},--Sudo users
     disabled_channels = {},
     realm = {},--Realms Id
     moderation = {data = 'data/moderation.json'},
@@ -340,7 +340,9 @@ will return group ban list
 
 **U can use both "/" and "!" 
 
-
+This bot Create by @Mr_SilVer1
+You can Give 5tomans create group For 3 month
+And 2tomans create group for 1 month
 *Only owner and mods can add bots in group
 
 
