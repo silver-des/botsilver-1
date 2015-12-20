@@ -223,15 +223,14 @@ function create_config( )
     disabled_channels = {},
     realm = {},--Realms Id
     moderation = {data = 'data/moderation.json'},
-    about_text = [[Teleseed v1
+    about_text = [[SilVerBoT v1
 An advance Administration bot based on yagop/telegram-bot 
 
-https://github.com/SEEDTEAM/TeleSeed
+This is Old Bot Of Telegram
 
 Admins
-@iwals [Founder]
-@imandaneshi [Developer]
-@seyedan25 [Manager]
+@Mr_SilVer1[Report]
+@Masterunknown
 
 Special thanks to
 awkward_potato
@@ -239,8 +238,10 @@ Siyanew
 topkecleon
 Vamptacus
 
-Our channels
-@teleseedch [English]
+You Want Create Group
+Join Link And Say Pls Create Group For Me
+Group link:
+https://telegram.me/joinchat/CR-k3ARmHEQZ9Y38vtreBQ
 ]],
     help_text = [[
 Commands list :
