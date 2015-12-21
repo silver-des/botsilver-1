@@ -239,9 +239,8 @@ topkecleon
 Vamptacus
 
 You Want Create Group
-Join Link And Say Pls Create Group For Me
-Group link:
-https://telegram.me/joinchat/CR-k3ARmHEQZ9Y38vtreBQ
+ Pm To Admin`s And Say Pls Create Group For Me
+@Mr_SilVEr1
 ]],
     help_text = [[
 Commands list :
