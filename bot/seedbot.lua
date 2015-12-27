@@ -232,12 +232,6 @@ Admins
 @Mr_SilVer1[Report]
 @Masterunknown
 
-Special thanks to
-awkward_potato
-Siyanew
-topkecleon
-Vamptacus
-
 You Want Create Group
  Pm To Admin`s And Say Pls Create Group For Me
 @Mr_SilVEr1
