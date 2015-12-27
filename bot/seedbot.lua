@@ -116,60 +116,7 @@ function pre_process_msg(msg)
 
   return msg
 end
-          -- do not greet (super)banned users or API bots.
-          if is_super_banned(user_id) or is_banned(user_id, msg.to.id) then
-            print 'Ignored. User is banned!'
-            return nil
-          end
-          if user_flags == 4352 then
-            print 'Ignored. It is an API bot.'
-            return nil
-          end
-        end
 
-        if matches[1] == 'chat_add_user' or matches[1] == 'chat_add_user_link' then
-          if data[tostring(msg.to.id)] then
-            local about = ''
-            local rules = ''
-            if data[tostring(msg.to.id)]['description'] then
-              about = '\nDescription :\n'..data[tostring(msg.to.id)]['description']..'\n'
-            end
-            if data[tostring(msg.to.id)]['rules'] then
-              rules = '\nRules :\n'..data[tostring(msg.to.id)]['rules']..'\n'
-            end
-            local welcomes = 'Welcome '..username..new_member..' ['..user_id..'].\n'
-                             ..'You are in group '..msg.to.title..'.\n'
-            if welcome_stat == 'group' then
-              receiver = get_receiver(msg)
-            elseif welcome_stat == 'private' then
-              receiver = 'user#id'..msg.from.id
-            end
-            send_large_msg(receiver, welcomes..about..rules..'\n', ok_cb, false)
-          end
-        elseif matches[1] == 'chat_del_user' then
-          return 'Bye '..new_member..'!'
-        end
-      end
-    end
-  end
-
-  return {
-    description = 'Sends a custom message when a user enters or leave a chat.',
-    usage = {
-      moderator = {
-        '!welcome group : Welcome message will shows in group.',
-        '!welcome pm : Welcome message will send to new member via PM.',
-        '!welcome disable : Disable welcome message.'
-      },
-    },
-    patterns = {
-      '^!!tgservice (.+)$',
-      '^!(welcome) (.*)$'
-    },
-    run = run
-  }
-
-end
 
 -- Go over enabled plugins patterns.
 function match_plugins(msg)
