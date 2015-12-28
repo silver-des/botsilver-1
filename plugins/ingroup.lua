@@ -568,10 +568,6 @@ local function run(msg, matches)
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked flood ")
         return lock_group_floodmod(msg, data, target)
       end
-            if matches[2] == 'Kir' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked flood ")
-        return lock_group_Kir(msg, data, target)
-      end
       if matches[2] == 'arabic' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked arabic ")
         return lock_group_arabic(msg, data, target)
@@ -605,7 +601,7 @@ local function run(msg, matches)
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group settings ")
       return show_group_settingsmod(msg, data, target)
     end
-    if matches[1] == 'set_link' then
+    if matches[1] == 'new_link' then
       if not is_momod(msg) then
         return "For moderators only!"
       end
@@ -625,7 +621,7 @@ local function run(msg, matches)
       end
       local group_link = data[tostring(msg.to.id)]['settings']['set_link']
       if not group_link then 
-        return "Create a link using /setlink first !"
+        return "Create a link using /newlink first !"
       end
        savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
       return "Group link:\n"..group_link
@@ -747,7 +743,7 @@ return {
   "^[!/](setflood) (%d+)$",
   "^[!/](settings)$",
   "^[!/](modlist)$",
-  "^[!/](setlink)$",
+  "^[!/](newlink)$",
   "^[!/](getlink)$",
   "%[(photo)%]",
   "^!!tgservice (.+)$",
