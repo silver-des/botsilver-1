@@ -568,6 +568,10 @@ local function run(msg, matches)
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked flood ")
         return lock_group_floodmod(msg, data, target)
       end
+            if matches[2] == 'Kir' then
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked flood ")
+        return lock_group_Kir(msg, data, target)
+      end
       if matches[2] == 'arabic' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked arabic ")
         return lock_group_arabic(msg, data, target)
@@ -601,7 +605,7 @@ local function run(msg, matches)
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group settings ")
       return show_group_settingsmod(msg, data, target)
     end
-    if matches[1] == 'newlink' then
+    if matches[1] == 'set_link' then
       if not is_momod(msg) then
         return "For moderators only!"
       end
@@ -615,41 +619,41 @@ local function run(msg, matches)
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] revoked group link ")
       return export_chat_link(receiver, callback, true)
     end
-    if matches[1] == 'link' then
+    if matches[1] == 'get_link' then
       if not is_momod(msg) then
         return "For moderators only!"
       end
       local group_link = data[tostring(msg.to.id)]['settings']['set_link']
       if not group_link then 
-        return "Create a link using /newlink first !"
+        return "Create a link using /setlink first !"
       end
        savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
       return "Group link:\n"..group_link
     end
-    if matches[1] == 'setowner' then
+    if matches[1] == 'setgpowner' then
       if not is_owner(msg) then
         return "For owner only!"
       end
-      data[tostring(msg.to.id)]['set_owner'] = matches[2]
+      data[tostring(msg.to.id)]['set_gpowner'] = matches[2]
       save_data(_config.moderation.data, data)
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] set ["..matches[2].."] as owner")
       local text = matches[2].." added as owner"
       return text
     end
-    if matches[1] == 'owner' then
-      local group_owner = data[tostring(msg.to.id)]['set_owner']
+    if matches[1] == 'own' then
+      local group_owner = data[tostring(msg.to.id)]['set_gpowner']
       if not group_owner then 
         return "no owner,ask admins in support groups to set owner for your group"
       end
-      savelog(msg.to.id, name_log.." ["..msg.from.id.."] used /owner")
+      savelog(msg.to.id, name_log.." ["..msg.from.id.."] used /own")
       return "Group owner is ["..group_owner..']'
     end
-    if matches[1] == 'setgpowner' then
+    if matches[1] == 'set_gpowner' then
       local receiver = "chat#id"..matches[2]
       if not is_admin(msg) then
         return "For admins only!"
       end
-      data[tostring(matches[2])]['set_owner'] = matches[3]
+      data[tostring(matches[2])]['set_gpowner'] = matches[3]
       save_data(_config.moderation.data, data)
       local text = matches[3].." added as owner"
       send_large_msg(receiver, text)
@@ -735,16 +739,16 @@ return {
   "^[!/](demote) (.*)$",
   "^[!/](set) ([^%s]+) (.*)$",
   "^[!/](lock) (.*)$",
-  "^[!/](setowner) (%d+)$",
-  "^[!/](owner,own)$",
+  "^[!/](setgpowner) (%d+)$",
+  "^[!/](own)$",
   "^[!/](res) (.*)$",
   "^[!/](setgpowner) (%d+) (%d+)$",-- (group id) (owner id)
   "^[!/](unlock) (.*)$",
   "^[!/](setflood) (%d+)$",
   "^[!/](settings)$",
   "^[!/](modlist)$",
-  "^[!/](newlink,setlink)$",
-  "^[!/](link,getlink)$",
+  "^[!/](setlink)$",
+  "^[!/](getlink)$",
   "%[(photo)%]",
   "^!!tgservice (.+)$",
   },
